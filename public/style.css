@@ -15,5 +15,3 @@ header{height:88px;display:flex;align-items:center;justify-content:space-between
 .card-symbol{display:block;width:72%;height:auto;max-height:55%;object-fit:contain;pointer-events:none;user-select:none}.emerging-card .card-symbol{width:73%;max-height:65%}
 
 .card-symbol{mix-blend-mode:screen;filter:contrast(1.5)}
-
-.pack-mark{position:absolute;width:116%;height:auto;left:-8%;top:4%;mix-blend-mode:screen;pointer-events:none;user-select:none}

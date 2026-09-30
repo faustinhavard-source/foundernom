@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101010"><title>Foundernon — Open. Collect. Repeat.</title><meta name="description" content="Collect the founders, startups, funds and cities building tomorrow."><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><a class="wordmark" href="#packs" id="brand-home">foundernon</a><nav aria-label="Main navigation"><button id="packs-tab" class="nav active" aria-current="page">Packs</button><button id="collection-tab" class="nav">Collection <span id="collection-count">0</span></button></nav></header>
+<main>
+<section id="packs-screen" aria-label="Open packs">
+<div id="sealed-view" class="pack-layout">
+<div class="pack-stage" id="pack-stage">
+<div id="flying-cards" aria-hidden="true"></div>
+<button id="pack-object" class="sealed-pack" aria-label="Open pack" disabled>
+<span class="pouch-body"><img class="pack-photo" src="/pack-silver.png" alt="Silver Foundernon pack" draggable="false"><span class="pack-reflection" aria-hidden="true"></span></span>
+<span class="pouch-top" aria-hidden="true"><img class="pack-photo" src="/pack-silver.png" alt="" draggable="false"></span>
+<span class="cut-line" aria-hidden="true"></span>
+</button></div>
+<div class="pack-action"><button id="open-pack" class="primary" disabled>Loading…</button><span class="action-note">5 cards · unlimited packs</span></div>
+</div>
+<div id="reveal-view" hidden><div id="reveal-cards" class="reveal-grid"></div><div class="reveal-actions"><button id="reveal-all" class="primary">Reveal all</button><button id="another-pack" class="primary" hidden>Open pack</button><button id="view-collection" class="secondary">Collection</button></div><span id="reveal-counter" class="sr-only" aria-live="polite"></span><p id="reveal-hint" hidden></p></div>
+</section>
+<section id="collection-screen" hidden aria-labelledby="collection-title"><div class="section-top"><span id="collection-progress" class="muted">0 / 2,864</span></div><div class="collection-heading"><h1 id="collection-title">Collection</h1><p><strong id="total-cards">0</strong> cards <span> / </span><strong id="pack-count">0</strong> packs</p></div><div class="filters"><div id="category-filters" aria-label="Filter by category"><button class="chip selected" data-kind="All">All cards</button><button class="chip" data-kind="Founder">Founders</button><button class="chip" data-kind="Startup">Startups</button><button class="chip" data-kind="Fund">Funds</button><button class="chip" data-kind="City">Cities</button></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Find a card" aria-label="Search your collection"></label></div><div id="collection-grid" class="collection-grid"></div><div id="collection-empty" class="empty"><h2>No cards yet.</h2><button id="empty-open" class="primary">Open pack</button></div><p id="no-results" class="empty" hidden>No cards match your search.</p><button id="show-more" class="secondary" hidden>Show more cards</button></section>
+</main>
+<footer><span class="muted">Collection saved for this browser.</span></footer>
+<div id="notice" role="status" aria-live="polite" hidden></div>
+<script src="/app.js" type="module"></script>
+</body></html>

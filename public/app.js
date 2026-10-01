@@ -17,7 +17,7 @@ function renderReveal(){const grid=$('reveal-cards');grid.innerHTML=state.opened
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function animateOpening(){
  const stage=$('pack-stage');
- $('flying-cards').innerHTML=state.opened.map((_,i)=>`<div class="emerging-card" style="--i:${i};--offset:${i-2}"><img class="card-symbol" src="/card-symbol.png" alt=""></div>`).join('');
+ $('flying-cards').innerHTML=state.opened.map((_,i)=>`<div class="emerging-card" style="--i:${i};--offset:${i-2}"><img class="card-symbol pack-opening-logo" src="/pack-mark-reference.png" alt=""></div>`).join('');
  stage.classList.remove('unsealing');
  void stage.offsetWidth;
  stage.classList.add('unsealing');

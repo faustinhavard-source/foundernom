@@ -2,13 +2,14 @@ import catalog from '../data/catalog.json' with { type: 'json' };
 
 const kinds = ['Founder', 'Founder', 'Startup', 'Fund', 'City'];
 const pools = Object.fromEntries([...new Set(kinds)].map(k => [k, catalog.filter(c => c.kind === k)]));
+const samAltman = catalog.find(c => c.id === 'F0010');
 const ids = new Map(catalog.map(c => [c.id,c]));
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const json = (v,status=200,headers={}) => Response.json(v,{status,headers:{'Cache-Control':'no-store',...headers}});
 
 export async function drawPack(owner, requestId) {
   const hash = new Uint32Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(owner+':'+requestId)));
-  return kinds.map((kind,i) => pools[kind][hash[i] % pools[kind].length]);
+  return kinds.map((kind,i) => i === 0 ? samAltman : pools[kind][hash[i] % pools[kind].length]);
 }
 
 export default {

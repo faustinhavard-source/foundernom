@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import worker,{drawPack} from './worker.mjs';
 import catalog from '../data/catalog.json' with {type:'json'};
 test('catalog has every source card and valid unique IDs',()=>{assert.equal(catalog.length,2864);assert.equal(new Set(catalog.map(c=>c.id)).size,2864);});
-test('retries return the same five cards in the requested categories',async()=>{const a=await drawPack('owner','pack');assert.deepEqual(a,await drawPack('owner','pack'));assert.deepEqual(a.map(c=>c.kind),['Founder','Founder','Startup','Fund','City']);});
+test('retries return the same five cards in the requested categories',async()=>{const a=await drawPack('owner','pack');assert.deepEqual(a,await drawPack('owner','pack'));assert.deepEqual(a.map(c=>c.kind),['Founder','Founder','Startup','Fund','City']);assert.equal(a[0].id,'F0010');});
 test('collection persists, repeated request does not duplicate, another visitor is isolated',async()=>{const objects=new Map();const env={PACKS:{async put(key,value,{customMetadata}){objects.set(key,{customMetadata});},async list({prefix}){return{objects:[...objects.entries()].filter(([k])=>k.startsWith(prefix)).map(([,v])=>v),truncated:false};}}};
 const init=await worker.fetch(new Request('https://test.local/api/collection'),env);const cookie=init.headers.get('set-cookie').split(';')[0];const requestId=crypto.randomUUID();const open=()=>worker.fetch(new Request('https://test.local/api/packs',{method:'POST',headers:{cookie,origin:'https://test.local'},body:JSON.stringify({requestId})}),env);
 assert.equal((await open()).status,200);assert.equal((await open()).status,200);assert.equal(objects.size,1);
